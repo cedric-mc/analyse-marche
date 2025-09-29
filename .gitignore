@@ -29,3 +29,5 @@ Thumbs.db
 
 # OSX miscellaneous
 .DS_Store
+
+*.json
