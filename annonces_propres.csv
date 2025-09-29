@@ -7,3 +7,12 @@ Maison A vendre,Châtenay-Malabry,Rue des Grillons,235.0,6.0,3,2.0,990000.0,4212
 Maison A vendre,Châtenay-Malabry,Face à l'Arboretum,186.0,6.0,2,1.0,1000000.0,5376.344086021505,https://french-immobilier.com/property/maison-8-pieces-200-m%c2%b2-terrain-855-m%c2%b2-face-a-larboretum/
 Appartement A vendre,Sceaux,Résidence Alexia,90.0,3.0,1,1.0,550000.0,6111.111111111111,https://french-immobilier.com/property/appartement-4-pieces-90-m%c2%b2-terrasse-vue-degagee/
 Appartement A vendre,Sceaux,Résidence Les Jardins d'Orion,71.0,2.0,1,2.0,380000.0,5352.112676056338,https://french-immobilier.com/property/appartement-3-pieces-71-m%c2%b2-terrasses-sceaux/
+titre,prix,surface,chambres,salles_bain,garage,ville,quartier,lien
+Appartement A vendre,210 000 €,32m²,,1,,Sceaux,Avenue Alphonse Cherrier,https://french-immobilier.com/property/parc-de-sceaux-studio-32-m%c2%b2-balcon/
+Appartement A vendre,335 000 €,60m²,2,1,,Sceaux,Rue des Chéneaux,https://french-immobilier.com/property/appartement-3-pieces-45-m%c2%b2-jardin-privatif-47-m%c2%b2/
+Appartement A vendre,600 000 €,126m²,4,2,1,Fontenay-aux-Roses,Quartier Robinson,https://french-immobilier.com/property/appartement-6-pieces-12677-m%c2%b2-4-chambres/
+Appartement A vendre,600 000 €,67m²,2,1,1,Sceaux,Rue Michel Voisin,https://french-immobilier.com/property/2665/
+Maison A vendre,990 000 €,235m²,6,3,2,Châtenay-Malabry,Rue des Grillons,https://french-immobilier.com/property/maison-darchitecte-8-pieces-235-m%c2%b2-terrain-550-m%c2%b2/
+Maison A vendre,1 000 000 €,186m²,6,2,1,Châtenay-Malabry,Face à l'Arboretum,https://french-immobilier.com/property/maison-8-pieces-200-m%c2%b2-terrain-855-m%c2%b2-face-a-larboretum/
+Appartement A vendre,550 000 €,90m²,3,1,1,Sceaux,Résidence Alexia,https://french-immobilier.com/property/appartement-4-pieces-90-m%c2%b2-terrasse-vue-degagee/
+Appartement A vendre,380 000 €,71m²,2,1,2,Sceaux,Résidence Les Jardins d'Orion,https://french-immobilier.com/property/appartement-3-pieces-71-m%c2%b2-terrasses-sceaux/
