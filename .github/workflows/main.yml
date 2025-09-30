@@ -27,7 +27,7 @@ jobs:
     - name: Run Scrapy spider & save cleaned data
       run: |
         cd src/webscraping
-        scrapy crawl french_immobilier -o annonces_propres.csv
+        scrapy crawl french_immobilier -o ../../annonces_propres.csv
 
     - name: Commit & push CSV
       run: |
