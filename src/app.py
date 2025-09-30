@@ -43,7 +43,13 @@ def load_data(csv_string):
     # Tableau interactif
     # -----------------
     st.subheader("Aperçu des données")
-    st.dataframe(df, use_container_width=True)
+    
+    # Transformer les URLs en balises HTML <img>
+    df_display = df.copy()
+    df_display['lien'] = df_display['lien'].apply(lambda x: f'<a href="{x}" target="_blank">Détails</a>')
+    df_display["image"] = df_display["image"].apply(lambda x: f'<img src="{x}" width="120">')
+    df_display = df_display.fillna('') # Fill 
+    st.write(df_display.to_html(escape=False), unsafe_allow_html=True)
 
     # -----------------
     # Visualisations
