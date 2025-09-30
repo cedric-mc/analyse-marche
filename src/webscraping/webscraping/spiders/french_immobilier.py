@@ -31,7 +31,7 @@ class FrenchImmobilierSpider(scrapy.Spider):
             self.results.append(item)
             yield item
 
-        # Pagination
-        next_page = response.css('a.next.page-numbers::attr(href)').get()
+        # Pagination : chercher le bouton "suivant"
+        next_page = response.css('a.pager_next::attr(href)').get()
         if next_page:
-            yield response.follow(next_page, self.parse)
+            yield response.follow(next_page, callback=self.parse)
