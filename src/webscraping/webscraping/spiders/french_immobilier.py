@@ -12,7 +12,7 @@ class FrenchImmobilierSpider(scrapy.Spider):
         for annonce in response.css('div.sc_property_item'):
             item = {
                 'titre': annonce.css('div.sc_property_description::text').get(),
-                'prix': annonce.css('span.property_price_box_price::text').get(),
+                'prix': annonce.css('span.property_price_box_price::text').get() if annonce.css('span.property_price_box_price::text') else None,
                 'surface': annonce.css('span.icon-building113::text').get().replace("m²", "").strip(),
                 'chambres': annonce.css('span.icon-bed::text').get(),
                 'salles_bain': annonce.css('span.icon-bath::text').get(),
