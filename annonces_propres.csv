@@ -1,71 +1,31 @@
-titre,prix,surface,chambres,salles_bain,garage,ville,quartier,lien
-Appartement A vendre,210 000 €,32m²,,1,,Sceaux,Avenue Alphonse Cherrier,https://french-immobilier.com/property/parc-de-sceaux-studio-32-m%c2%b2-balcon/
-Appartement A vendre,335 000 €,60m²,2,1,,Sceaux,Rue des Chéneaux,https://french-immobilier.com/property/appartement-3-pieces-45-m%c2%b2-jardin-privatif-47-m%c2%b2/
-Appartement A vendre,600 000 €,126m²,4,2,1,Fontenay-aux-Roses,Quartier Robinson,https://french-immobilier.com/property/appartement-6-pieces-12677-m%c2%b2-4-chambres/
-Appartement A vendre,600 000 €,67m²,2,1,1,Sceaux,Rue Michel Voisin,https://french-immobilier.com/property/2665/
-Maison A vendre,990 000 €,235m²,6,3,2,Châtenay-Malabry,Rue des Grillons,https://french-immobilier.com/property/maison-darchitecte-8-pieces-235-m%c2%b2-terrain-550-m%c2%b2/
-Maison A vendre,900 000 €,186m²,6,2,1,Châtenay-Malabry,Face à l'Arboretum,https://french-immobilier.com/property/maison-8-pieces-200-m%c2%b2-terrain-855-m%c2%b2-face-a-larboretum/
-Appartement A vendre,550 000 €,90m²,3,1,1,Sceaux,Résidence Alexia,https://french-immobilier.com/property/appartement-4-pieces-90-m%c2%b2-terrasse-vue-degagee/
-Appartement A vendre,380 000 €,71m²,2,1,2,Sceaux,Résidence Les Jardins d'Orion,https://french-immobilier.com/property/appartement-3-pieces-71-m%c2%b2-terrasses-sceaux/
-titre,prix,surface,chambres,salles_bain,garage,ville,quartier,lien
-Appartement A vendre,210 000 €,32m²,,1,,Sceaux,Avenue Alphonse Cherrier,https://french-immobilier.com/property/parc-de-sceaux-studio-32-m%c2%b2-balcon/
-Appartement A vendre,335 000 €,60m²,2,1,,Sceaux,Rue des Chéneaux,https://french-immobilier.com/property/appartement-3-pieces-45-m%c2%b2-jardin-privatif-47-m%c2%b2/
-Appartement A vendre,600 000 €,126m²,4,2,1,Fontenay-aux-Roses,Quartier Robinson,https://french-immobilier.com/property/appartement-6-pieces-12677-m%c2%b2-4-chambres/
-Appartement A vendre,600 000 €,67m²,2,1,1,Sceaux,Rue Michel Voisin,https://french-immobilier.com/property/2665/
-Maison A vendre,990 000 €,235m²,6,3,2,Châtenay-Malabry,Rue des Grillons,https://french-immobilier.com/property/maison-darchitecte-8-pieces-235-m%c2%b2-terrain-550-m%c2%b2/
-Maison A vendre,900 000 €,186m²,6,2,1,Châtenay-Malabry,Face à l'Arboretum,https://french-immobilier.com/property/maison-8-pieces-200-m%c2%b2-terrain-855-m%c2%b2-face-a-larboretum/
-Appartement A vendre,550 000 €,90m²,3,1,1,Sceaux,Résidence Alexia,https://french-immobilier.com/property/appartement-4-pieces-90-m%c2%b2-terrasse-vue-degagee/
-Appartement A vendre,380 000 €,71m²,2,1,2,Sceaux,Résidence Les Jardins d'Orion,https://french-immobilier.com/property/appartement-3-pieces-71-m%c2%b2-terrasses-sceaux/
-Appartement A vendre,280 000 €,63m²,3,1,1,Sceaux,Rue des Filmins,https://french-immobilier.com/property/appartement-4-pieces-balcon-plein-sud/
-Appartement A vendre,450 000 €,88m²,3,2,2,Le Plessis-Robinson,Coeur de Ville,https://french-immobilier.com/property/appartement-4-pieces-coeur-de-ville/
-Maison A vendre,640 000 €,135m²,4,2,1,Bagneux,Limitrophe Sceaux,https://french-immobilier.com/property/maison-appartement-5-pieces-135-m%c2%b2-jardin-de-475-m%c2%b2-bagneux-limite-sceaux/
-Appartement A vendre,435 000 €,65m²,2,1,1,Le Plessis-Robinson,Chemin des Ecoles,https://french-immobilier.com/property/appartement-3-pieces-balcon-loggia-coeur-de-ville/
-Appartement A vendre,170 000 €,25m²,1,1,,Sceaux,Rue des Aulnes,https://french-immobilier.com/property/studio-appartement-1-piece-25-m%c2%b2-rer-sceaux/
-Appartement A vendre,900 000 €,111m²,3,2,2,Sceaux,Rue de Penthièvre,https://french-immobilier.com/property/appartement-5-pieces-111-m%c2%b2-jardin-de-400-m%c2%b2-sceaux-centre/
-Appartement A vendre,435 000 €,70m²,3,1,1,Bourg-la-Reine,Centre-ville,https://french-immobilier.com/property/appartement-4-pieces-70-m%c2%b2-balcon-centre-ville/
-Appartement A vendre,346 500 €,68m²,2,1,1,Le Plessis-Robinson,Rue Edmond About,https://french-immobilier.com/property/appartement-3-pieces-68-m%c2%b2-balcon-box/
-Appartement A vendre,280 000 €,66m²,1,1,,Fontenay-aux-Roses,Rue Boucicaut,https://french-immobilier.com/property/appartement-2-pieces-66-m%c2%b2-centre-ville/
-Appartement A vendre,459 000 €,65m²,2,1,2,Le Plessis-Robinson,Rue du Carreau,https://french-immobilier.com/property/appartement-3-pieces-66-m%c2%b2-terrasse-loggia-cite-jardins-coeur-de-ville/
-Appartement A vendre,449 000 €,68m²,2,1,1,Le Plessis-Robinson,Cœur de Ville,https://french-immobilier.com/property/appartement-3-pieces-terrasse-loggia-coeur-de-ville/
-Appartement A vendre,649 000 €,89m²,3,2,2,Le Plessis-Robinson,Cité-Jardins,https://french-immobilier.com/property/appartement-4-pieces-terrasse-dernier-etage-cite-jardins/
-Appartement A vendre,260 000 €,41m²,1,1,1,Le Plessis Robinson,Rue du Moulin Fidel,https://french-immobilier.com/property/appartement-2-pieces-41-m%c2%b2-balcon-vallee-aux-loups/
-Appartement A vendre,265 000 €,61m²,2,1,1,L'Hay Les Roses,Quartier Les Blondeaux,https://french-immobilier.com/property/appartement-3-pieces-terrasse-garage/
-Appartement A vendre,320 000 €,65m²,2,1,,Le Plessis-Robinson,Rue Edmont About,https://french-immobilier.com/property/le-plessis-robinson-appartement-3-pieces-balcon/
-Appartement A vendre,295 000 €,48m²,1,1,,Sceaux,Rue Houdan,https://french-immobilier.com/property/appartement-2-pieces-48-m%c2%b2-terrasse-sud-15m%c2%b2/
-Appartement A vendre,155 000 €,21m²,,1,,Chatenay Malabry,Rue Guynemer,https://french-immobilier.com/property/parc-de-sceaux-coulee-verte-studio-de-21-m%c2%b2/
-Maison A vendre,1 268 000 €,195m²,5,3,1,Bourg la Reine,92340,https://french-immobilier.com/property/bourg-la-reine-maison-6-pieces-studio-independant/
-Appartement A vendre,519 000 €,78m²,3,1,1,Sceaux,92330,https://french-immobilier.com/property/sceaux-appartement-4-pieces-loggia/
-Appartement A vendre,310 000 €,58m²,2,1,,Sceaux,"92330, France",https://french-immobilier.com/property/sceaux-appartement-3-pieces-2/
-Appartement A vendre,299 000 €,61m²,2,1,,"Sceaux, Robinson","92330, France",https://french-immobilier.com/property/sceaux-appartement-3-pieces/
-Appartement A vendre,250 000 €,46m²,1,1,1,Chatenay Malabry,"92290, France",https://french-immobilier.com/property/sceaux-chatenay-appartement-2-pieces/
-titre,prix,surface,chambres,salles_bain,garage,ville,quartier,lien,image
-Appartement A vendre,210 000,32,,1,,Sceaux,Avenue Alphonse Cherrier,https://french-immobilier.com/property/parc-de-sceaux-studio-32-m%c2%b2-balcon/,
-Appartement A vendre,335 000,60,2,1,,Sceaux,Rue des Chéneaux,https://french-immobilier.com/property/appartement-3-pieces-45-m%c2%b2-jardin-privatif-47-m%c2%b2/,
-Appartement A vendre,600 000,126,4,2,1,Fontenay-aux-Roses,Quartier Robinson,https://french-immobilier.com/property/appartement-6-pieces-12677-m%c2%b2-4-chambres/,
-Appartement A vendre,600 000,67,2,1,1,Sceaux,Rue Michel Voisin,https://french-immobilier.com/property/2665/,
-Maison A vendre,990 000,235,6,3,2,Châtenay-Malabry,Rue des Grillons,https://french-immobilier.com/property/maison-darchitecte-8-pieces-235-m%c2%b2-terrain-550-m%c2%b2/,
-Maison A vendre,900 000,186,6,2,1,Châtenay-Malabry,Face à l'Arboretum,https://french-immobilier.com/property/maison-8-pieces-200-m%c2%b2-terrain-855-m%c2%b2-face-a-larboretum/,
-Appartement A vendre,550 000,90,3,1,1,Sceaux,Résidence Alexia,https://french-immobilier.com/property/appartement-4-pieces-90-m%c2%b2-terrasse-vue-degagee/,
-Appartement A vendre,380 000,71,2,1,2,Sceaux,Résidence Les Jardins d'Orion,https://french-immobilier.com/property/appartement-3-pieces-71-m%c2%b2-terrasses-sceaux/,
-Appartement A vendre,280 000,63,3,1,1,Sceaux,Rue des Filmins,https://french-immobilier.com/property/appartement-4-pieces-balcon-plein-sud/,
-Appartement A vendre,450 000,88,3,2,2,Le Plessis-Robinson,Coeur de Ville,https://french-immobilier.com/property/appartement-4-pieces-coeur-de-ville/,
-Maison A vendre,640 000,135,4,2,1,Bagneux,Limitrophe Sceaux,https://french-immobilier.com/property/maison-appartement-5-pieces-135-m%c2%b2-jardin-de-475-m%c2%b2-bagneux-limite-sceaux/,
-Appartement A vendre,435 000,65,2,1,1,Le Plessis-Robinson,Chemin des Ecoles,https://french-immobilier.com/property/appartement-3-pieces-balcon-loggia-coeur-de-ville/,
-Appartement A vendre,170 000,25,1,1,,Sceaux,Rue des Aulnes,https://french-immobilier.com/property/studio-appartement-1-piece-25-m%c2%b2-rer-sceaux/,
-Appartement A vendre,900 000,111,3,2,2,Sceaux,Rue de Penthièvre,https://french-immobilier.com/property/appartement-5-pieces-111-m%c2%b2-jardin-de-400-m%c2%b2-sceaux-centre/,
-Appartement A vendre,435 000,70,3,1,1,Bourg-la-Reine,Centre-ville,https://french-immobilier.com/property/appartement-4-pieces-70-m%c2%b2-balcon-centre-ville/,
-Appartement A vendre,346 500,68,2,1,1,Le Plessis-Robinson,Rue Edmond About,https://french-immobilier.com/property/appartement-3-pieces-68-m%c2%b2-balcon-box/,
-Appartement A vendre,280 000,66,1,1,,Fontenay-aux-Roses,Rue Boucicaut,https://french-immobilier.com/property/appartement-2-pieces-66-m%c2%b2-centre-ville/,
-Appartement A vendre,459 000,65,2,1,2,Le Plessis-Robinson,Rue du Carreau,https://french-immobilier.com/property/appartement-3-pieces-66-m%c2%b2-terrasse-loggia-cite-jardins-coeur-de-ville/,
-Appartement A vendre,449 000,68,2,1,1,Le Plessis-Robinson,Cœur de Ville,https://french-immobilier.com/property/appartement-3-pieces-terrasse-loggia-coeur-de-ville/,
-Appartement A vendre,649 000,89,3,2,2,Le Plessis-Robinson,Cité-Jardins,https://french-immobilier.com/property/appartement-4-pieces-terrasse-dernier-etage-cite-jardins/,
-Appartement A vendre,260 000,41,1,1,1,Le Plessis Robinson,Rue du Moulin Fidel,https://french-immobilier.com/property/appartement-2-pieces-41-m%c2%b2-balcon-vallee-aux-loups/,
-Appartement A vendre,265 000,61,2,1,1,L'Hay Les Roses,Quartier Les Blondeaux,https://french-immobilier.com/property/appartement-3-pieces-terrasse-garage/,
-Appartement A vendre,320 000,65,2,1,,Le Plessis-Robinson,Rue Edmont About,https://french-immobilier.com/property/le-plessis-robinson-appartement-3-pieces-balcon/,
-Appartement A vendre,295 000,48,1,1,,Sceaux,Rue Houdan,https://french-immobilier.com/property/appartement-2-pieces-48-m%c2%b2-terrasse-sud-15m%c2%b2/,
-Appartement A vendre,155 000,21,,1,,Chatenay Malabry,Rue Guynemer,https://french-immobilier.com/property/parc-de-sceaux-coulee-verte-studio-de-21-m%c2%b2/,
-Maison A vendre,1 268 000,195,5,3,1,Bourg la Reine,92340,https://french-immobilier.com/property/bourg-la-reine-maison-6-pieces-studio-independant/,
-Appartement A vendre,519 000,78,3,1,1,Sceaux,92330,https://french-immobilier.com/property/sceaux-appartement-4-pieces-loggia/,
-Appartement A vendre,310 000,58,2,1,,Sceaux,"92330, France",https://french-immobilier.com/property/sceaux-appartement-3-pieces-2/,
-Appartement A vendre,299 000,61,2,1,,"Sceaux, Robinson","92330, France",https://french-immobilier.com/property/sceaux-appartement-3-pieces/,
-Appartement A vendre,250 000,46,1,1,1,Chatenay Malabry,"92290, France",https://french-immobilier.com/property/sceaux-chatenay-appartement-2-pieces/,
+titre,prix,surface,chambres,salles_bain,garage,ville,quartier,lien,image,prix_m2
+Appartement A vendre,210 000,32,,1,,Sceaux,Avenue Alphonse Cherrier,https://french-immobilier.com/property/parc-de-sceaux-studio-32-m%c2%b2-balcon/,https://french-immobilier.com/wp-content/uploads/2025/09/IMG_20250918_145514_edit_279959305566796-770x460.jpg,
+Appartement A vendre,335 000,60,2,1,,Sceaux,Rue des Chéneaux,https://french-immobilier.com/property/appartement-3-pieces-45-m%c2%b2-jardin-privatif-47-m%c2%b2/,https://french-immobilier.com/wp-content/uploads/2025/09/EXCLU-3-770x460.jpg,
+Appartement A vendre,600 000,126,4,2,1,Fontenay-aux-Roses,Quartier Robinson,https://french-immobilier.com/property/appartement-6-pieces-12677-m%c2%b2-4-chambres/,https://french-immobilier.com/wp-content/uploads/2025/09/sous-offre-1-770x460.jpg,
+Appartement A vendre,600 000,67,2,1,1,Sceaux,Rue Michel Voisin,https://french-immobilier.com/property/2665/,https://french-immobilier.com/wp-content/uploads/2025/07/sous-offre-2-770x460.jpg,
+Maison A vendre,990 000,235,6,3,2,Châtenay-Malabry,Rue des Grillons,https://french-immobilier.com/property/maison-darchitecte-8-pieces-235-m%c2%b2-terrain-550-m%c2%b2/,https://french-immobilier.com/wp-content/uploads/2025/04/exclusivite-2-770x460.jpg,
+Maison A vendre,900 000,186,6,2,1,Châtenay-Malabry,Face à l'Arboretum,https://french-immobilier.com/property/maison-8-pieces-200-m%c2%b2-terrain-855-m%c2%b2-face-a-larboretum/,https://french-immobilier.com/wp-content/uploads/2025/04/exclusivite-5-770x460.jpg,
+Appartement A vendre,550 000,90,3,1,1,Sceaux,Résidence Alexia,https://french-immobilier.com/property/appartement-4-pieces-90-m%c2%b2-terrasse-vue-degagee/,https://french-immobilier.com/wp-content/uploads/2025/04/SOUS-COMPROMIS-3-770x460.jpg,
+Appartement A vendre,380 000,71,2,1,2,Sceaux,Résidence Les Jardins d'Orion,https://french-immobilier.com/property/appartement-3-pieces-71-m%c2%b2-terrasses-sceaux/,https://french-immobilier.com/wp-content/uploads/2024/10/VENDU-770x460.jpg,
+Appartement A vendre,280 000,63,3,1,1,Sceaux,Rue des Filmins,https://french-immobilier.com/property/appartement-4-pieces-balcon-plein-sud/,https://french-immobilier.com/wp-content/uploads/2024/04/VENDU-770x460.jpg,
+Appartement A vendre,450 000,88,3,2,2,Le Plessis-Robinson,Coeur de Ville,https://french-immobilier.com/property/appartement-4-pieces-coeur-de-ville/,https://french-immobilier.com/wp-content/uploads/2023/05/VENDU-3-770x460.jpg,
+Maison A vendre,640 000,135,4,2,1,Bagneux,Limitrophe Sceaux,https://french-immobilier.com/property/maison-appartement-5-pieces-135-m%c2%b2-jardin-de-475-m%c2%b2-bagneux-limite-sceaux/,https://french-immobilier.com/wp-content/uploads/2023/02/VENDU-770x460.jpg,
+Appartement A vendre,435 000,65,2,1,1,Le Plessis-Robinson,Chemin des Ecoles,https://french-immobilier.com/property/appartement-3-pieces-balcon-loggia-coeur-de-ville/,https://french-immobilier.com/wp-content/uploads/2022/06/VENDU-770x460.jpg,
+Appartement A vendre,170 000,25,1,1,,Sceaux,Rue des Aulnes,https://french-immobilier.com/property/studio-appartement-1-piece-25-m%c2%b2-rer-sceaux/,https://french-immobilier.com/wp-content/uploads/2022/05/template-770x460.jpg,
+Appartement A vendre,900 000,111,3,2,2,Sceaux,Rue de Penthièvre,https://french-immobilier.com/property/appartement-5-pieces-111-m%c2%b2-jardin-de-400-m%c2%b2-sceaux-centre/,https://french-immobilier.com/wp-content/uploads/2022/05/template-1-770x460.jpg,
+Appartement A vendre,435 000,70,3,1,1,Bourg-la-Reine,Centre-ville,https://french-immobilier.com/property/appartement-4-pieces-70-m%c2%b2-balcon-centre-ville/,https://french-immobilier.com/wp-content/uploads/2022/05/WithBanniere19-770x460.jpg,
+Appartement A vendre,346 500,68,2,1,1,Le Plessis-Robinson,Rue Edmond About,https://french-immobilier.com/property/appartement-3-pieces-68-m%c2%b2-balcon-box/,https://french-immobilier.com/wp-content/uploads/2022/05/WithBanniere18-770x460.jpg,
+Appartement A vendre,280 000,66,1,1,,Fontenay-aux-Roses,Rue Boucicaut,https://french-immobilier.com/property/appartement-2-pieces-66-m%c2%b2-centre-ville/,https://french-immobilier.com/wp-content/uploads/2022/05/WithBanniere20-770x460.jpg,
+Appartement A vendre,459 000,65,2,1,2,Le Plessis-Robinson,Rue du Carreau,https://french-immobilier.com/property/appartement-3-pieces-66-m%c2%b2-terrasse-loggia-cite-jardins-coeur-de-ville/,https://french-immobilier.com/wp-content/uploads/2021/08/WithBanniere2-770x460.jpg,
+Appartement A vendre,449 000,68,2,1,1,Le Plessis-Robinson,Cœur de Ville,https://french-immobilier.com/property/appartement-3-pieces-terrasse-loggia-coeur-de-ville/,https://french-immobilier.com/wp-content/uploads/2021/06/WithBanniere1-770x460.jpg,
+Appartement A vendre,649 000,89,3,2,2,Le Plessis-Robinson,Cité-Jardins,https://french-immobilier.com/property/appartement-4-pieces-terrasse-dernier-etage-cite-jardins/,https://french-immobilier.com/wp-content/uploads/2021/05/WithBanniere4-770x460.jpg,
+Appartement A vendre,260 000,41,1,1,1,Le Plessis Robinson,Rue du Moulin Fidel,https://french-immobilier.com/property/appartement-2-pieces-41-m%c2%b2-balcon-vallee-aux-loups/,https://french-immobilier.com/wp-content/uploads/2020/10/WithBanniere6-770x460.jpg,
+Appartement A vendre,265 000,61,2,1,1,L'Hay Les Roses,Quartier Les Blondeaux,https://french-immobilier.com/property/appartement-3-pieces-terrasse-garage/,https://french-immobilier.com/wp-content/uploads/2020/09/WithBanniere7-770x460.jpg,
+Appartement A vendre,320 000,65,2,1,,Le Plessis-Robinson,Rue Edmont About,https://french-immobilier.com/property/le-plessis-robinson-appartement-3-pieces-balcon/,https://french-immobilier.com/wp-content/uploads/2020/06/WithBanniere9-770x460.jpg,
+Appartement A vendre,295 000,48,1,1,,Sceaux,Rue Houdan,https://french-immobilier.com/property/appartement-2-pieces-48-m%c2%b2-terrasse-sud-15m%c2%b2/,https://french-immobilier.com/wp-content/uploads/2020/06/WithBanniere8-770x460.jpg,
+Appartement A vendre,155 000,21,,1,,Chatenay Malabry,Rue Guynemer,https://french-immobilier.com/property/parc-de-sceaux-coulee-verte-studio-de-21-m%c2%b2/,https://french-immobilier.com/wp-content/uploads/2020/01/WithBanniere15-770x460.jpg,
+Maison A vendre,1 268 000,195,5,3,1,Bourg la Reine,92340,https://french-immobilier.com/property/bourg-la-reine-maison-6-pieces-studio-independant/,https://french-immobilier.com/wp-content/uploads/2020/01/WithBanniere12-770x460.jpg,
+Appartement A vendre,519 000,78,3,1,1,Sceaux,92330,https://french-immobilier.com/property/sceaux-appartement-4-pieces-loggia/,https://french-immobilier.com/wp-content/uploads/2019/10/WithBanniere16-770x460.jpg,
+Appartement A vendre,310 000,58,2,1,,Sceaux,"92330, France",https://french-immobilier.com/property/sceaux-appartement-3-pieces-2/,https://french-immobilier.com/wp-content/uploads/2019/05/WithBanniere13-770x460.jpg,
+Appartement A vendre,299 000,61,2,1,,"Sceaux, Robinson","92330, France",https://french-immobilier.com/property/sceaux-appartement-3-pieces/,https://french-immobilier.com/wp-content/uploads/2019/04/WithBanniere14-770x460.jpg,
+Appartement A vendre,250 000,46,1,1,1,Chatenay Malabry,"92290, France",https://french-immobilier.com/property/sceaux-chatenay-appartement-2-pieces/,https://french-immobilier.com/wp-content/uploads/2019/03/WithBanniere17-770x460.jpg,

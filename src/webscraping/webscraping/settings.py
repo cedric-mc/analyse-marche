@@ -85,3 +85,8 @@ DOWNLOAD_DELAY = 1
 
 # Set settings whose default value is deprecated to a future-proof value
 FEED_EXPORT_ENCODING = "utf-8"
+
+FEED_EXPORT_FIELDS = [
+    "titre", "prix", "surface", "chambres", "salles_bain",
+    "garage", "ville", "quartier", "lien", "image", "prix_m2"
+]
