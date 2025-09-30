@@ -11,9 +11,7 @@ class DvoPipeline:
     def clean_prix(self, prix_str):
         if not isinstance(prix_str, str):
             return None
-        # supprime les espaces
-        prix_clean = re.sub(r"[^\d]", "", prix_str)
-        return int(prix_clean) if prix_clean else None
+        return int(prix_str) if prix_str else None
 
     def clean_surface(self, surface_str):
         if not isinstance(surface_str, str):
