@@ -1,5 +1,4 @@
 import scrapy
-import json
 
 class FrenchImmobilierSpider(scrapy.Spider):
     name = 'french_immobilier'
@@ -20,7 +19,7 @@ class FrenchImmobilierSpider(scrapy.Spider):
                 'ville': annonce.css('div.sc_property_title_address_1 a::text').get(),
                 'quartier': annonce.css('div.sc_property_title_address_2::text').get(),
                 'lien': annonce.css('div.sc_property_image a::attr(href)').get(),
-                'image': annonce.css('img.wp-post-image img::attr(src)').get()
+                'image': annonce.css('img.wp-post-image::attr(src)').get()
             }
             self.results.append(item)
             yield item
