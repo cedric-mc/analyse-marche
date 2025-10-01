@@ -50,9 +50,9 @@ def load_data(csv_string):
     df_display["image"] = df_display["image"].apply(lambda x: f'<img src="{x}" width="120">')
     df_display = df_display.fillna('') # Fill
     # Transformer les floats en int pour l'affichage, uniquement les colonnes spéficifées
-    for col in ['chambres', 'garage']:
-        if col in df_display.columns:
-            df_display[col] = df_display[col].apply(lambda x: int(x) if pd.notnull(x) else x)
+    # for col in ['chambres', 'garage']:
+    #     if col in df_display.columns:
+    #         df_display[col] = df_display[col].apply(lambda x: int(x) if pd.notnull(x) else x)
     st.write(df_display.to_html(escape=False), unsafe_allow_html=True)
 
     # -----------------

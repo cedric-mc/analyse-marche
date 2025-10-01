@@ -90,3 +90,5 @@ FEED_EXPORT_FIELDS = [
     "titre", "prix", "surface", "chambres", "salles_bain",
     "garage", "ville", "quartier", "lien", "image", "prix_m2"
 ]
+
+CSV_DELIMITER = ";"

@@ -5,14 +5,12 @@ class FrenchImmobilierSpider(scrapy.Spider):
     allowed_domains = ['french-immobilier.com']
     start_urls = ['https://french-immobilier.com/property_group/a-vendre/']
 
-    results = []
-
     def parse(self, response):
         for annonce in response.css('div.sc_property_item'):
-            item = {
+            yield {
                 'titre': annonce.css('div.sc_property_description::text').get(),
-                'prix': annonce.css('span.property_price_box_price::text').get() if annonce.css('span.property_price_box_price::text') else None,
-                'surface': annonce.css('span.icon-building113::text').get().replace("m²", "").strip(),
+                'prix': annonce.css('span.property_price_box_price::text').get(),
+                'surface': annonce.css('span.icon-building113::text').get(),
                 'chambres': annonce.css('span.icon-bed::text').get(),
                 'salles_bain': annonce.css('span.icon-bath::text').get(),
                 'garage': annonce.css('span.icon-warehouse::text').get(),
@@ -21,10 +19,12 @@ class FrenchImmobilierSpider(scrapy.Spider):
                 'lien': annonce.css('div.sc_property_image a::attr(href)').get(),
                 'image': annonce.css('img.wp-post-image::attr(src)').get()
             }
-            self.results.append(item)
-            yield item
 
-        # Pagination : chercher le bouton "suivant"
+        # Pagination
         next_page = response.css('a.pager_next::attr(href)').get()
         if next_page:
             yield response.follow(next_page, callback=self.parse)
+
+    # Pour exécuter ce spider, utilisez la commande suivante dans le terminal :
+    # scrapy crawl french_immobilier -o annonces.json
+    # sauf que le fichier de sortie n'est

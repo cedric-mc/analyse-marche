@@ -27,7 +27,10 @@ jobs:
     - name: Run Scrapy spider & save cleaned data # Executes the Scrapy spider and saves output to CSV
       run: |
         cd src/webscraping
-        scrapy crawl french_immobilier -O ../../annonces_propres.csv
+        scrapy crawl french_immobilier -O ../../annonces.json
+
+    - name: Clean data with Python script # Runs the cleaning script to process the scraped data
+      run: python src/clean.py annonces.json
 
     - name: Commit & push CSV # Commits and pushes the updated CSV file back to the repository (github-actions[bot] is the user)
       run: |
