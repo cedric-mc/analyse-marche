@@ -53,7 +53,7 @@ def main():
     df['prix_m2'] = df['prix'] / df['surface']
 
     # 5️⃣ Sauvegarder en CSV
-    df.to_csv("annonces_propres.csv", index=False, encoding='utf-8', sep=';')
+    df.to_csv("annonces_propres.csv", index=False, encoding='utf-8')
 
     print("✅ Nettoyage terminé. Fichier 'annonces_propres.csv' créé.")
 
