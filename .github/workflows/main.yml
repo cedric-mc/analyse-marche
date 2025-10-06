@@ -30,7 +30,7 @@ jobs:
         scrapy crawl french_immobilier -O ../../annonces.json
 
     - name: Clean data with Python script # Runs the cleaning script to process the scraped data
-      run: python src/clean.py annonces.json
+      run: python src/clean.py annonces.json annonces_propres.csv
 
     - name: Commit & push CSV # Commits and pushes the updated CSV file back to the repository (github-actions[bot] is the user)
       run: |
