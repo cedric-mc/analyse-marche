@@ -1,0 +1,49 @@
+name: Mise à jour des données immobilières
+
+on:
+  workflow_dispatch:
+    inputs:
+      ville:
+        description: "Ville cible"
+        required: false
+        default: "Paris"
+      type:
+        description: "Type de bien"
+        required: false
+        default: "Maison"
+      prix_max:
+        description: "Prix maximum"
+        required: false
+        default: "1000000"
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout du repo
+        uses: actions/checkout@v4
+
+      - name: Installer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Installer dépendances
+        run: |
+          pip install -r requirements.txt
+
+      - name: Exécuter le scraping ou nettoyage
+        run: |
+          python scripts/generer_csv.py \
+            --ville "${{ github.event.inputs.ville }}" \
+            --type "${{ github.event.inputs.type }}" \
+            --prix_max "${{ github.event.inputs.prix_max }}"
+
+      - name: Commit et push du nouveau CSV
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add annonces_propres.csv
+          git commit -m "🔄 Mise à jour des données immo ($(date))" || echo "Aucun changement"
+          git push
