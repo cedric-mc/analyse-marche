@@ -20,7 +20,7 @@ jobs:
         python-version: '3.11'
 
     - name: Install dependencies # Installs required Python packages
-      run: pip install -r requirements.txt
+      run: pip install -r src/requirements.txt
 
     - name: Run Scrapy spider & save cleaned data # Executes the Scrapy spider and saves output to CSV
       run: |
