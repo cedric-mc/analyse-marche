@@ -114,24 +114,18 @@ with tab1:
 
     # Formatage des colonnes
     if "prix" in page_df.columns:
-        page_df["prix"] = page_df["prix"].apply(lambda x: f"{x:,.2f} €")
+        page_df["prix"] = page_df["prix"].apply(lambda x: f"{x} €")
 
     if "surface" in page_df.columns:
-        page_df["surface"] = page_df["surface"].apply(lambda x: f"{x:.2f} m²")
+        page_df["surface"] = page_df["surface"].apply(lambda x: f"{x} m²")
 
     if "prix_m2" in page_df.columns:
-        page_df["prix_m2"] = page_df["prix_m2"].apply(lambda x: f"{x:,.2f} €/m²")
+        page_df["prix_m2"] = page_df["prix_m2"].apply(lambda x: f"{x} €/m²")
 
     # Lien cliquable
     page_df["lien"] = page_df["lien"].apply(
         lambda x: f'<a href="{x}" target="_blank">Lien</a>'
     )
-
-    # Image principale (si dispo)
-    if "image_principale" in page_df.columns:
-        page_df["image_principale"] = page_df["image_principale"].apply(
-            lambda x: f'<img src="{x}" width="100">' if pd.notna(x) else "N/A"
-        )
 
     # Galerie d'images (si dispo)
     if "images_page" in page_df.columns:
@@ -190,3 +184,34 @@ with tab2:
         )
         st.plotly_chart(fig, use_container_width=True)
         st.markdown("**Interprétation :** Ce graphique montre le nombre d'annonces disponibles dans chaque ville. Cela peut aider à identifier les zones avec plus d'offres immobilières.")
+
+    colA, colB = st.columns(2)
+    with colA:
+        if "dpe" in filtered_df:
+            st.subheader("Répartition par DPE")
+            dpe_counts = filtered_df["dpe"].value_counts().reindex(['A', 'B', 'C', 'D', 'E', 'F', 'G']).fillna(0)
+            fig = px.bar(
+                dpe_counts.reset_index(),
+                x=df["dpe"].value_counts().reindex(['A', 'B', 'C', 'D', 'E', 'F', 'G']).fillna(0).index,
+                y=dpe_counts.values,
+                labels={"index": "Classe DPE", "y": "Nombre d'annonces"},
+                title="Répartition des annonces par classe DPE",
+                text_auto=True
+            )
+            st.plotly_chart(fig, use_container_width=True)
+            st.markdown("**Interprétation :** Ce graphique montre la répartition des annonces selon leur classe énergétique (DPE). Cela peut aider à évaluer l'efficacité énergétique des biens proposés.")
+
+    with colB:
+        if "ges" in filtered_df:
+            st.subheader("Répartition par GES")
+            ges_counts = filtered_df["ges"].value_counts().reindex(['A', 'B', 'C', 'D', 'E', 'F', 'G']).fillna(0)
+            fig = px.bar(
+                ges_counts.reset_index(),
+                x=ges_counts.index,
+                y=ges_counts.values,
+                labels={"index": "Classe GES", "y": "Nombre d'annonces"},
+                title="Répartition des annonces par classe GES",
+                text_auto=True
+            )
+            st.plotly_chart(fig, use_container_width=True)
+            st.markdown("**Interprétation :** Ce graphique montre la répartition des annonces selon leur classe d'émissions de gaz à effet de serre (GES). Cela peut aider à évaluer l'impact environnemental des biens proposés.")
