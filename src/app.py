@@ -42,7 +42,7 @@ if df.empty:
 # =========================
 # En-tête et résumé
 # =========================
-st.title("🏠 Tableau de Bord — Analyse du Marché Immobilier")
+st.title("🏠 Tableau de Bord — Analyse du Marché Immobilier XD")
 st.markdown("##### _Projet LDF : Pipeline complet de données immobilières_")
 
 # Statistiques clés
@@ -133,7 +133,7 @@ with tab1:
             try:
                 imgs = eval(images) if isinstance(images, str) else images
                 if isinstance(imgs, list) and imgs:
-                    return " ".join([f'<img src="{img}" width="100">' for img in imgs[:5]])
+                    return " ".join([f'<img src="{img}" width="50">' for img in imgs[:5]])
                 else:
                     return "N/A"
             except Exception:
