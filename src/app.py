@@ -452,15 +452,80 @@ def render_visualizations(df: pd.DataFrame):
         st.plotly_chart(fig, use_container_width=True)
     
     colA, colB = st.columns(2)
+
+    # --- Palette de couleurs cohérente avec DPE/GES
+    dpe_colors = {
+        "A": "#16a34a",  # Vert foncé
+        "B": "#65a30d",
+        "C": "#ca8a04",
+        "D": "#f59e0b",
+        "E": "#f97316",
+        "F": "#dc2626",
+        "G": "#991b1b"
+    }
+
+    ges_colors = {
+        "A": "#0ea5e9",  # bleu clair
+        "B": "#38bdf8",
+        "C": "#22d3ee",
+        "D": "#a855f7",
+        "E": "#d946ef",
+        "F": "#f43f5e",
+        "G": "#7f1d1d",  # rouge foncé
+    }
+
     with colA:
-        if "dpe" in df: # Ranger par lettre DPE
-            fig = px.histogram(df, x="dpe", category_orders={"dpe": ["A", "B", "C", "D", "E", "F", "G"]}, color_discrete_sequence=["#f59e0b"])
-            fig.update_layout(title="Distribution des DPE", title_x=0.3, xaxis_title="DPE", yaxis_title="Nombre d'annonces")
+        if "dpe" in df:
+            dpe_counts = df["dpe"].value_counts().reindex(["A","B","C","D","E","F","G"]).fillna(0)
+            dpe_df = dpe_counts.reset_index()
+            dpe_df.columns = ["DPE", "Nombre d'annonces"]
+
+            fig = px.bar(
+                dpe_df,
+                y="DPE",
+                x="Nombre d'annonces",
+                orientation="h",
+                color="DPE",
+                color_discrete_map=dpe_colors,
+                title="🏠 Distribution des DPE (énergie)",
+            )
+
+            fig.update_layout(
+                barmode="stack",
+                title_x=0.2,
+                xaxis_title="Nombre d'annonces",
+                yaxis_title="DPE",
+                showlegend=False,
+                height=400,
+            )
+
             st.plotly_chart(fig, use_container_width=True)
+
     with colB:
-        if "ges" in df: # Ranger par lettre GES
-            fig = px.histogram(df, x="ges", category_orders={"ges": ["A", "B", "C", "D", "E", "F", "G"]}, color_discrete_sequence=["#ef4444"])
-            fig.update_layout(title="Distribution des GES", title_x=0.3, xaxis_title="GES", yaxis_title="Nombre d'annonces")
+        if "ges" in df:
+            ges_counts = df["ges"].value_counts().reindex(["A","B","C","D","E","F","G"]).fillna(0)
+            ges_df = ges_counts.reset_index()
+            ges_df.columns = ["GES", "Nombre d'annonces"]
+
+            fig = px.bar(
+                ges_df,
+                y="GES",
+                x="Nombre d'annonces",
+                orientation="h",
+                color="GES",
+                color_discrete_map=ges_colors,
+                title="🌫️ Distribution des GES (gaz à effet de serre)",
+            )
+
+            fig.update_layout(
+                barmode="stack",
+                title_x=0.2,
+                xaxis_title="Nombre d'annonces",
+                yaxis_title="GES",
+                showlegend=False,
+                height=400,
+            )
+
             st.plotly_chart(fig, use_container_width=True)
 
 
