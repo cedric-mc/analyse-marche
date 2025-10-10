@@ -5,6 +5,8 @@ from os import getenv
 from dotenv import load_dotenv
 from io import StringIO
 import plotly.express as px
+import json
+import requests
 
 # =========================
 # Configuration générale
@@ -83,7 +85,13 @@ def apply_custom_css():
     table tr:hover td {
         background-color: #e9ecef;
     }
-    /* Styles des images dans les tableaux */
+    /* Styles des images dans les tableaux */*
+    table td:has(> img) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4px;
+        align-items: center;
+    }
     table img {
         border-radius: 8px;
         margin-right: 4px;
@@ -132,7 +140,7 @@ def apply_custom_css():
     """, unsafe_allow_html=True)
 
 
-@st.cache_data
+# @st.cache_data
 def load_data() -> pd.DataFrame:
     """
     Charge les données depuis le fichier CSV hébergé sur GitHub.
@@ -204,27 +212,46 @@ def sidebar_filters(df: pd.DataFrame):
         "🏙️ Ville",
         sorted(df["ville"].dropna().unique()),
         default=[],
-        key=f"ville_filter{key_suffix}"
+        key=f"ville_filter{key_suffix}",
+        help="Sélectionnez les villes que vous souhaitez inclure dans l'analyse.",
+        label_visibility="visible",
+        placeholder="Toutes les villes"
     )
     type_bien = st.sidebar.multiselect(
         "🏠 Type de bien",
         sorted(df["type"].dropna().unique()),
         default=[],
-        key=f"type_filter{key_suffix}"
+        key=f"type_filter{key_suffix}",
+        help="Sélectionnez les types de biens que vous souhaitez inclure dans l'analyse.",
+        label_visibility="visible",
+        placeholder="Tous les types"
     )
+    prix_min = int(df["prix"].min()) if df["prix"].nunique() > 1 else int(df["prix"].min()) - 1
+    prix_max = int(df["prix"].max()) if df["prix"].nunique() > 1 else int(df["prix"].max()) + 1
     prix_min, prix_max = st.sidebar.slider(
         "💰 Prix (€)",
-        int(df["prix"].min()),
-        int(df["prix"].max()),
-        (int(df["prix"].min()), int(df["prix"].max())),
+        prix_min,
+        prix_max,
+        (prix_min, prix_max),
         key=f"prix_range{key_suffix}"
     )
+    surface_min = int(df["surface"].min()) if df["surface"].nunique() > 1 else int(df["surface"].min()) - 1
+    surface_max = int(df["surface"].max()) if df["surface"].nunique() > 1 else int(df["surface"].max()) + 1
     surface_min, surface_max = st.sidebar.slider(
         "📏 Surface (m²)",
-        int(df["surface"].min()),
-        int(df["surface"].max()),
-        (int(df["surface"].min()), int(df["surface"].max())),
+        surface_min,
+        surface_max,
+        (surface_min, surface_max),
         key=f"surface_range{key_suffix}"
+    )
+    options = st.sidebar.multiselect(
+        "⚙️ Options (logique ET)",
+        ["Parking 🚗", "Jardin 🌳", "Balcon/Terrasse 🏖️", "Piscine 🏊‍♂️", "Ascenseur 🛗", "Accès Handicapé ♿"],
+        default=[],
+        key=f"options_filter{key_suffix}",
+        help="Sélectionnez les options que le bien doit posséder.",
+        label_visibility="visible",
+        placeholder="Toutes les options"
     )
 
     # === Application des filtres ===
@@ -233,6 +260,19 @@ def sidebar_filters(df: pd.DataFrame):
         filtered_df = filtered_df[filtered_df["ville"].isin(ville)]
     if type_bien:
         filtered_df = filtered_df[filtered_df["type"].isin(type_bien)]
+    if options:
+        option_map = {
+            "Parking 🚗": "parking",
+            "Jardin 🌳": "jardin",
+            "Balcon/Terrasse 🏖️": "balcon_terrasse",
+            "Piscine 🏊‍♂️": "piscine",
+            "Ascenseur 🛗": "ascenseur",
+            "Accès Handicapé ♿": "acces_handicape"
+        } # Dans le fichier de données, ils sont à True/False
+        for opt in options:
+            col_name = option_map.get(opt)
+            if col_name in filtered_df.columns:
+                filtered_df = filtered_df[filtered_df[col_name] == True]
     filtered_df = filtered_df[
         (filtered_df["prix"] >= prix_min)
         & (filtered_df["prix"] <= prix_max)
@@ -254,6 +294,12 @@ def render_data_table(df: pd.DataFrame):
 
     page_size = 10
     total_rows = len(df)
+
+    # 🚨 Si aucun résultat, on affiche un message et on quitte
+    if total_rows == 0:
+        st.warning("😕 Aucun résultat ne correspond à vos filtres, désolé 😓.")
+        return
+
     total_pages = (total_rows - 1) // page_size + 1
 
     # --- 🩵 Réinitialisation automatique si le nombre de lignes a changé ---
@@ -303,7 +349,7 @@ def render_data_table(df: pd.DataFrame):
     end = st.session_state.current_page * page_size
     page_df = df.iloc[start:end].copy()
 
-    colonnes_affichees = ["type", "ville", "prix", "surface", "prix_m2", "images_page", "lien"]
+    colonnes_affichees = ["type", "ville", "prix", "surface", "prix_m2", "images_page", "lien", "parking", "jardin", "balcon_terrasse", "piscine", "ascenseur", "acces_handicape"]
     page_df = page_df[[c for c in colonnes_affichees if c in page_df.columns]]
 
     # === Formats ===
@@ -331,11 +377,32 @@ def render_data_table(df: pd.DataFrame):
         page_df["galerie"] = page_df["images_page"].apply(render_gallery)
         page_df.drop(columns=["images_page"], inplace=True)
 
-    page_df.columns = ['Type', 'Ville', 'Prix', 'Surface', 'Prix/m²', 'Lien', 'Galerie']
+    # === Options === (parking, jardin, balcon/terrasse, piscine, ascenseur, accès handicapé) afficher des ronds de couleurs différentes pour chaque option
+    option_cols = ["parking", "jardin", "balcon_terrasse", "piscine", "ascenseur", "acces_handicape"]
+    available_option_cols = [col for col in option_cols if col in page_df.columns]
+    if available_option_cols:
+        def render_options(row):
+            icons = {
+                "parking": "🚗",
+                "jardin": "🌳",
+                "balcon_terrasse": "🏖️",
+                "piscine": "🏊",
+                "ascenseur": "🛗",
+                "acces_handicape": "♿"
+            }
+            parts = []
+            for col in available_option_cols:
+                if pd.notna(row[col]) and row[col]:
+                    parts.append(f'<span title="{col.replace("_", " ").capitalize()}">{icons.get(col, "")}</span>')
+            return " ".join(parts) if parts else "—"
+        page_df["options"] = page_df.apply(render_options, axis=1)
+        page_df.drop(columns=available_option_cols, inplace=True)
+    if "options" in page_df:
+        page_df["options"] = page_df["options"].replace("", "—")
+    page_df.columns = ['Type', 'Ville', 'Prix', 'Surface', 'Prix/m²', 'Lien', 'Galerie', 'Options']
 
     st.write(page_df.to_html(escape=False, index=False), unsafe_allow_html=True)
     st.caption(f"📄 Total : {total_rows} annonces")
-
 
 
 def render_visualizations(df: pd.DataFrame):
@@ -383,6 +450,18 @@ def render_visualizations(df: pd.DataFrame):
         )
 
         st.plotly_chart(fig, use_container_width=True)
+    
+    colA, colB = st.columns(2)
+    with colA:
+        if "dpe" in df: # Ranger par lettre DPE
+            fig = px.histogram(df, x="dpe", category_orders={"dpe": ["A", "B", "C", "D", "E", "F", "G"]}, color_discrete_sequence=["#f59e0b"])
+            fig.update_layout(title="Distribution des DPE", title_x=0.3, xaxis_title="DPE", yaxis_title="Nombre d'annonces")
+            st.plotly_chart(fig, use_container_width=True)
+    with colB:
+        if "ges" in df: # Ranger par lettre GES
+            fig = px.histogram(df, x="ges", category_orders={"ges": ["A", "B", "C", "D", "E", "F", "G"]}, color_discrete_sequence=["#ef4444"])
+            fig.update_layout(title="Distribution des GES", title_x=0.3, xaxis_title="GES", yaxis_title="Nombre d'annonces")
+            st.plotly_chart(fig, use_container_width=True)
 
 
 def render_rankings(df: pd.DataFrame):
@@ -451,7 +530,69 @@ def render_rankings(df: pd.DataFrame):
 def render_settings():
     """Affiche les paramètres de l'application."""
     st.subheader("⚙️ Paramètres")
-    st.markdown("Aucun paramètre disponible pour le moment.")
+    st.markdown("Gérez les paramètres et lancez le pipeline GitHub Actions depuis l'interface.")
+
+    st.markdown("---")
+    st.markdown("### ▶️ Lancer le pipeline (GitHub Actions)")
+    st.markdown(
+        "Pour déclencher le pipeline `main.yml`, fournissez un token GitHub avec le scope `repo` (ou un token d'action) et cliquez sur **Lancer le pipeline**."
+    )
+
+    # --- Token input ---
+    token_input = st.text_input(
+        "Token GitHub (laisser vide pour utiliser GITHUB_TOKEN chargé depuis .env)",
+        type="password",
+        placeholder="ghp_xxx...",
+    )
+
+    # --- Workflow info (repo / workflow id) ---
+    repo_owner = "cedric-mc"
+    repo_name = "analyse-marche"
+    workflow_filename = "main.yml"  # workflow file in .github/workflows
+
+    def dispatch_workflow(token: str) -> tuple[bool, str]:
+        """Dispatch the GitHub Actions workflow via the REST API.
+
+        Returns (success, message).
+        """
+        if not token:
+            return False, "Aucun token fourni."
+
+        url = f"https://api.github.com/repos/{repo_owner}/{repo_name}/actions/workflows/{workflow_filename}/dispatches"
+        headers = {
+            "Accept": "application/vnd.github+json",
+            "Authorization": f"Bearer {token}",
+            "X-GitHub-Api-Version": "2022-11-28",
+        }
+        payload = {"ref": "main"}
+
+        try:
+            resp = requests.post(url, headers=headers, data=json.dumps(payload), timeout=15)
+        except Exception as e:
+            return False, f"Requête échouée: {e}"
+
+        if resp.status_code in (200, 201, 204):
+            return True, "Pipeline déclenché avec succès."
+        # Return error body if available
+        try:
+            return False, f"Erreur {resp.status_code}: {resp.text}"
+        except Exception:
+            return False, f"Erreur {resp.status_code} lors de l'appel API."
+
+    # --- Button ---
+    if st.button("Lancer le pipeline"):
+        used_token = token_input.strip() if token_input else GITHUB_TOKEN
+        if not used_token:
+            st.error("Aucun token GitHub disponible. Configurez GITHUB_TOKEN dans .env ou saisissez un PAT valide.")
+        else:
+            with st.spinner("Envoi de la requête pour déclencher le workflow..."):
+                ok, msg = dispatch_workflow(used_token)
+            if ok:
+                st.success(msg)
+                st.markdown("Vous pouvez suivre l'exécution dans l'onglet Actions du dépôt GitHub.")
+                st.balloons()
+            else:
+                st.error(msg)
 
 
 # =========================

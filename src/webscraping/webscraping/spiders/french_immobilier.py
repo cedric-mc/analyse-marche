@@ -1,10 +1,19 @@
 from time import sleep
 import scrapy
+import os
+import json
 
 class FrenchImmobilierSpider(scrapy.Spider):
     name = 'french_immobilier'
     allowed_domains = ["etreproprio.com"]
     start_urls = ["https://www.etreproprio.com/annonces"]
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Charger les filtres envoyés par Streamlit
+        filters_env = os.getenv("SCRAPING_FILTERS", "{}")
+        self.filters = json.loads(filters_env)
+        self.log(f"Filtres appliqués : {self.filters}")
 
     def parse(self, response):
         """
@@ -52,17 +61,45 @@ class FrenchImmobilierSpider(scrapy.Spider):
             "acces_handicape": response.css("div.ep-features img::attr(alt)").re_first('accès handicapé'),
         }
 
+        titre = response.css("h1.annonce-immobilier::text").get()
+        type_bien = response.css('div.ep-breadcrumb-cla-dir li:nth-child(2) span[itemprop="name"]::text').get()
+        prix = response.css("div.ep-price::text").get()
+        surface = response.css("div.ep-area::text").get()
+        localisation = response.css("div.ep-loc::text").get()
+
+        # --- 💡 Application des filtres
+        f = self.filters
+        if f.get("type") and all(t.lower() not in type_bien.lower() for t in f["type"]):
+            return
+        if f.get("ville") and not any(v.lower() in localisation.lower() for v in f["ville"]):
+            return
+        if f.get("prix_min") or f.get("prix_max"):
+            import re
+            prix_num = re.sub(r"[^\d]", "", prix or "0")
+            if prix_num:
+                prix_val = int(prix_num)
+                if prix_val < f.get("prix_min", 0) or prix_val > f.get("prix_max", 10**9):
+                    return
+        if f.get("surface_min") or f.get("surface_max"):
+            import re
+            surf_num = re.sub(r"[^\d]", "", surface or "0")
+            if surf_num:
+                surf_val = int(surf_num)
+                if surf_val < f.get("surface_min", 0) or surf_val > f.get("surface_max", 10**6):
+                    return
+
+        # --- Si l’annonce passe les filtres, on la garde
         yield {
-            "titre": response.css("h1.annonce-immobilier::text").get(),
-            "type": response.css('div.ep-breadcrumb-cla-dir li:nth-child(2) span[itemprop="name"]::text').get(),
+            "titre": titre,
+            "type": type_bien,
             "lien": url_annonce,
-            "prix": response.css("div.ep-price::text").get(),
-            "surface": response.css("div.ep-area::text").get(),
+            "prix": prix,
+            "surface": surface,
             "surface_terrain": response.css("span.dtl-main-surface-terrain::text").get(),
             "pieces": response.css("div.ep-room::text").get(),
             "dpe": response.css("div.dpe-container div.dpe-letter.selected::text").get(),
             "ges": response.css("div.ges-container div.ges-letter.selected::text").get(),
-            "localisation": response.css("div.ep-loc::text").get(),
+            "localisation": localisation,
             "image_principale": image_principale,
             "images_page": images_page,
             "parking": options.get("parking"),
