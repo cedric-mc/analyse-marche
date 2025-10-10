@@ -8,7 +8,7 @@ La version publiée de l'application Streamlit est disponible ici :
 
 https://analyse-marche-k3cvzui58kbdjbahcome8b.streamlit.app/
 
-> Cette URL pointe vers l'instance publique déployée de l'application Streamlit contenant le tableau de bord et les outils d'analyse.
+> Cette URL pointe vers l'instance publique déployée de l'application Streamlit contenant le tableau de bord et les outils d'analyse. Pour utiliser l'interface dans de bonnes conditions, il est recommandé d'utiliser le thème clair du navigateur/système.
 
 ## Structure du projet
 
